@@ -157,6 +157,47 @@ static int N = 4;
 		return result;		
 	}
 	
+	static void valuesSameRow(int[][] matrix, int row, int col)
+	{
+		Vector values = new Vector();
+		for(int i=0; i<N; i++)
+		{
+		   if(matrix[row][i]==0 && i!=col)
+		   {
+			   String pair = pair_to_string(row, i);
+			   values.addElement(pair);
+		   }
+		}
+		
+		for(int i=0; i<N; i++)
+		{
+			if(matrix[i][col]==0 && i!=row)
+			{
+				String pair = pair_to_string(i, col);
+				values.addElement(pair);
+			}
+		}
+		
+		
+		int beginRow = row - row%2 ;
+		int beginCol = col - col%2;
+		
+		for(int i=beginRow; i<beginRow+2; i++)
+		{
+			for(int j=beginCol; j<beginCol+2; j++)
+				if(matrix[i][j]==0 )
+				{
+					String pair = pair_to_string(i, j);
+					values.addElement(pair);
+				}
+		}	
+		
+				
+		System.out.println(values);
+	}
+	
+	
+	
 	static void findIncidentes(int row, int col)
 	{
 		 
@@ -169,9 +210,11 @@ static int N = 4;
 		int [][] mat = {{0,0,0,0},{0,2,0,1},{4,0,1,0},{0,0,0,0}};
 		printM(mat, 4);
 		
+		valuesSameRow(mat, 0, 2);
 		
 		
-		fill_map(mat);
+		
+		//fill_map(mat);
 		
 		
 		
