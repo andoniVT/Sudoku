@@ -88,7 +88,7 @@ public class Main
 
 	public static void main(String[] args) throws IOException 
 	{
-		
+		/*
 		Vector matrices = Utils.parseFile("entrada.txt");
 		
 		int[][] mat =  (int[][]) matrices.get(2);
@@ -99,7 +99,7 @@ public class Main
 		if(solveSudoku(mat, 0))
 			Utils.printM(mat);
 		else
-			System.out.println("waaaaaaa");
+			System.out.println("waaaaaaa");*/
 		
 		
 		

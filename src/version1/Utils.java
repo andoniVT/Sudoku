@@ -3,6 +3,9 @@ package version1;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Vector;
 
 public class Utils 
@@ -10,7 +13,7 @@ public class Utils
 
 static int N = 4;
 	
-	static void printM(int[][] matrix)
+	static void printM(int[][] matrix, int N)
 	{
 	  for(int i=0; i<N; i++)
 	  {
@@ -39,7 +42,7 @@ static int N = 4;
 	    return content;
 	}
 	
-	public static Vector parseFile(String file) throws IOException
+	public static Vector parseFile(String file, int N) throws IOException
 	{
 		String content = readFile(file);
 		int n_tests = Integer.parseInt(content.substring(0, content.indexOf("\n")));
@@ -72,6 +75,7 @@ static int N = 4;
 		}
 		return matrices;
 	}
+	
 	
 	static boolean isInRow(int[][] matrix, int row, int value)
 	{
@@ -122,8 +126,40 @@ static int N = 4;
         	   res.add(num);
            }
 		}
-		return res;
-	  
+		return res; 	  
+	}
+	
+	public static String pair_to_string(int row, int col)
+	{
+	   return String.valueOf(row) + String.valueOf(col);	   
+	}
+	
+	public static Map<String, Vector> fill_map(int[][] mat)
+	{
+		Map<String, Vector> result = new HashMap<String, Vector>();
+		for(int i=0; i<N; i++)
+		{
+			for(int j=0; j<N; j++)
+			{
+				Vector values = getValues(mat, i, j);
+				String key = pair_to_string(i, j);
+				result.put(key, values);
+			}
+		}
+		
+		Iterator it = result.keySet().iterator();
+		while(it.hasNext())
+		{
+			String key = (String) it.next();
+			Vector res = result.get(key);
+			System.out.println("Clave: " + key + " -> Valor: " + res);		
+		}
+		return result;		
+	}
+	
+	static void findIncidentes(int row, int col)
+	{
+		 
 	}
 	
 	
@@ -131,11 +167,14 @@ static int N = 4;
 	{
 	
 		int [][] mat = {{0,0,0,0},{0,2,0,1},{4,0,1,0},{0,0,0,0}};
-		printM(mat);
+		printM(mat, 4);
 		
-		System.out.println(getValues(mat, 1, 1));
 		
-
+		
+		fill_map(mat);
+		
+		
+		
 	}
 
 }
