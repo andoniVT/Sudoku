@@ -126,7 +126,7 @@ public class Sudoku
 		 * */
 		
 		Sudoku test = new Sudoku(0, "entrada.txt");
-		test.solve();
+		//test.solve();
 		
 		
 		

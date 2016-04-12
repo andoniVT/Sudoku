@@ -1,0 +1,87 @@
+
+
+map -> valores_posibles
+(0,0) -> [1,3]
+(0,1) -> [1x,3,4]
+(0,2) -> [2,3,4]
+(0,3) -> [2,3,4]
+(1,0) -> [3]
+(1,2) -> [3,4]
+(2,1) -> [3]
+(2,3) -> [2,3]
+(3,0) -> [1x,2,3]
+(3,1) -> [1,3]
+(3,2) -> [2,3,4]
+(3,3) -> [2,3,4]
+
+void actualiza_valores_posibles(row_col , value)
+{
+    						0 , 0	---> 01 - 02- 03- 10- 30 - 00
+
+    vecinos = get_vecinos(row_col)
+    claves = []
+    for(i in vecinos)
+    {
+         vector = vecinos_posibles.key(i)
+         // verificar primero si el value esta en el vector
+         if existe:
+         	vector.remove(value)
+         	claves.append(i)
+    }
+    return vecinos
+}
+
+void reponer_valores_posibles(value, claves)
+{
+   for i in claves:
+   		value = valores_posibles.key(i)
+   		insert_in_orden(value)
+}
+
+
+
+bool someone_is_empty()
+{
+	for i in  valores_posible.items()
+	{
+	    key = i[0]
+	    if len(valores_posibles.get(key)==0):
+	    	return true 
+	}
+	return False;
+}
+
+
+
+
+
+solveSudoku(matrix)
+{
+    row , col = searchFreeSpace(matrix)
+    // row = 0 , col = 0
+    string row_col = str(row,col)
+
+    vector = valores_posibles.key(row_col)
+    // vector = [1,3]
+
+    for(i=0; i<vector.size(); i++)
+    {
+    	value = vector[i]
+    	matrix[row,col] = value  // matrix[0][0] = 1
+    	vecinos = actualiza_valores_posibles(row_col , value);
+    	bool verifica = someone_is_empty()
+    	if(not verifica)
+    	{
+    	    if(solveSudoku(matrix)) return True
+    	    matrix[row][col] = 0
+    	}
+    	reponer_valores_posibles(value, vecinos)
+
+    }
+    return False
+
+
+
+
+	
+}
