@@ -142,8 +142,12 @@ static int N = 4;
 			for(int j=0; j<N; j++)
 			{
 				Vector values = getValues(mat, i, j);
-				String key = pair_to_string(i, j);
-				result.put(key, values);
+				if(!values.isEmpty())
+				{
+					String key = pair_to_string(i, j);
+					result.put(key, values);
+				}
+				
 			}
 		}
 		
@@ -210,11 +214,11 @@ static int N = 4;
 		int [][] mat = {{0,0,0,0},{0,2,0,1},{4,0,1,0},{0,0,0,0}};
 		printM(mat, 4);
 		
-		valuesSameRow(mat, 0, 2);
+		//valuesSameRow(mat, 0, 0);
 		
 		
 		
-		//fill_map(mat);
+		fill_map(mat);
 		
 		
 		

@@ -9,12 +9,14 @@ public class Sudoku
 	 int type;
 	 String inputFile;
 	 Vector matrices;
+	 int counter;
 	
 	public Sudoku(int type, String inputFile) throws IOException
 	{
 	   this.type = type;
 	   this.inputFile = inputFile;
 	   this.matrices = Utils.parseFile(this.inputFile , N);    
+	   this.counter = 0;
 	}
 	
 	public int[] searchFreeSpace(int[][] matrix)
@@ -81,6 +83,7 @@ public class Sudoku
 			if(isPerfect(matrix, row, col, i))
 			{
 				matrix[row][col] = i;
+				this.counter++;
 								
 				if(solveSudoku(matrix))									
 					return true;						
@@ -104,6 +107,7 @@ public class Sudoku
 				else
 					System.out.println("Not solution found!");
 			  
+			   System.out.println(this.counter);
 			   System.out.println("\n");
 		   }		   		   		   		   		   
 	   }
