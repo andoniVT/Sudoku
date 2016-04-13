@@ -228,16 +228,14 @@ static Map<String, Vector> valores_probables;
 	
 	
 	
-	static void valuesSameRowColBox(int[][] matrix, int row, int col)
-	{
-		Map<String, Integer> result = new HashMap<String,Integer>();  
-		//Vector values = new Vector();
+	static Vector valuesSameRowColBox(int[][] matrix, int row, int col)
+	{		
+		Map<String, Integer> result = new HashMap<String,Integer>();  		
 		for(int i=0; i<N; i++)
 		{
 		   if(matrix[row][i]==0 && i!=col)
 		   {
-			   String pair = pair_to_string(row, i);
-			   //values.addElement(pair);
+			   String pair = pair_to_string(row, i);		
 			   result.put(pair, 0);
 		   }
 		}
@@ -247,7 +245,6 @@ static Map<String, Vector> valores_probables;
 			if(matrix[i][col]==0 && i!=row)
 			{
 				String pair = pair_to_string(i, col);
-				//values.addElement(pair);
 				result.put(pair, 0);
 			}
 		}
@@ -261,18 +258,22 @@ static Map<String, Vector> valores_probables;
 				if(matrix[i][j]==0 )
 				{
 					String pair = pair_to_string(i, j);
-					//values.addElement(pair);
 					result.put(pair, 0);
 				}
 		}
+		
+		String row_col = pair_to_string(row, col);
+		result.remove(row_col);
+		
+		Vector values = new Vector();
+		
 		Iterator it = result.keySet().iterator();
 		while(it.hasNext())
 		{
 			String key = (String) it.next();
-			System.out.println(key);		
-		}
-		
-		//return values;						
+			values.add(key);
+		}		
+		return values;						
 	}
 		
 	
@@ -281,14 +282,22 @@ static Map<String, Vector> valores_probables;
 		int[] values =  searchFreeSpace(matrix);
 		int row = values[0];
 		int col = values[1];
-		String row_col = pair_to_string(row, col);
-		
+		String row_col = pair_to_string(row, col);		
 		Vector vector = getVectorRepresentation(valores_probables , row_col);
+		
+		//System.out.println(row_col);
+		//System.out.println(vector);
+		
+		printM(matrix, 4);
+		System.out.println("\n");
+		
+		
 		for(int i=0; i<vector.size(); i++)
 		{
 			int value_to_insert = (int) vector.get(i);
 			matrix[row][col] = value_to_insert;
-			Vector incident_keys = new Vector(); // llamar a funcion q devuelve los keys indicentes a row,col
+			//Vector incident_keys = new Vector(); // llamar a funcion q devuelve los keys indicentes a row,col
+			Vector incident_keys = valuesSameRowColBox(matrix, row, col);
 			
 			Vector keys_with_values_removed = removePossibleValue(value_to_insert, incident_keys);
 			
@@ -303,9 +312,7 @@ static Map<String, Vector> valores_probables;
 			{
 			    insertPossibleValue(value_to_insert, keys_with_values_removed);
 			    matrix[row][col] = 0;
-			}
-			
-			//System.out.println(value_to_insert);
+			}					
 		}
 		
 		return false;		
@@ -333,7 +340,14 @@ static Map<String, Vector> valores_probables;
 		
 		valores_probables = getAllPossibleValues(mat);
 		
-		solveSudoku(mat);
+		if (solveSudoku(mat))
+		{
+			printM(mat, 4);
+		}
+		else
+		{
+			System.out.println("=(");
+		}
 		
 		
 		
@@ -351,7 +365,7 @@ static Map<String, Vector> valores_probables;
 				
 		
 		
-		//valuesSameRowColBox(mat, 0, 0);
+		//System.out.println(valuesSameRowColBox(mat, 0, 0));
 		
 				
 		
