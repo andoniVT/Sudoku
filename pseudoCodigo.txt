@@ -56,7 +56,7 @@ bool someone_is_empty()
 
 
 solveSudoku(matrix)
-{
+{	
     row , col = searchFreeSpace(matrix)
     // row = 0 , col = 0
     string row_col = str(row,col)
@@ -81,7 +81,28 @@ solveSudoku(matrix)
     return False
 
 
-
-
 	
 }
+
+
+
+
+
+
+public static Vector getValues(int [][] mat, int row, int col)
+	{
+		Vector res = new Vector();
+		if(mat[row][col]!=0)
+		{
+		  return res;	
+		}
+		
+		for(int num=1; num<=N; num++)
+		{
+           if(isPerfect(mat, row, col, num))
+           {
+        	   res.add(num);
+           }
+		}
+		return res; 	  
+	}

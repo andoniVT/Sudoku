@@ -13,8 +13,6 @@ public class Utils
 
 static int N = 4;
 static Map<String, Vector> valores_probables;
-
-
 	
 	static void printM(int[][] matrix, int N)
 	{
@@ -25,7 +23,7 @@ static Map<String, Vector> valores_probables;
 		  System.out.print("\n");
 	  }
 	}
-	
+		
 	public static String readFile(String filename) throws IOException
 	{
 	    String content = null;
@@ -79,6 +77,22 @@ static Map<String, Vector> valores_probables;
 		return matrices;
 	}
 	
+	public static int[] searchFreeSpace(int[][] matrix)
+	{
+	   for(int i=0; i< N; i++)
+	   {
+		   for(int j=0; j<N; j++)
+		   {
+			   if(matrix[i][j] == 0)
+			   {				  
+				   int [] result = {i,j};				  
+				   return result;  
+			   }				   
+		   }
+	   }
+	     int [] free = {-1,-1};
+		return free;	
+	}
 	
 	static boolean isInRow(int[][] matrix, int row, int value)
 	{
@@ -97,13 +111,10 @@ static Map<String, Vector> valores_probables;
 	static boolean isInBox(int[][] matrix, int row, int col, int value)
 	{
 		int beginRow = row - row%2 ;
-		int beginCol = col - col%2;
-		
-		for(int i=beginRow; i<beginRow+2; i++)
-		{
+		int beginCol = col - col%2;		
+		for(int i=beginRow; i<beginRow+2; i++)		
 			for(int j=beginCol; j<beginCol+2; j++)
-				if(matrix[i][j]==value) return true;	
-		}		
+				if(matrix[i][j]==value) return true;					
 		return false;
 	}
 	
@@ -114,63 +125,42 @@ static Map<String, Vector> valores_probables;
 		return false;
 	}
 	
-	public static Vector getValues(int [][] mat, int row, int col)
-	{
-		Vector res = new Vector();
-		if(mat[row][col]!=0)
-		{
-		  return res;	
-		}
-		
-		for(int num=1; num<=N; num++)
-		{
-           if(isPerfect(mat, row, col, num))
-           {
-        	   res.add(num);
-           }
-		}
-		return res; 	  
-	}
-	
-	public static Vector getValues2(int [][] mat, int row, int col)
-	{
-		Vector res = new Vector();
-		if(mat[row][col]!=0)
-		{
-		  return res;	
-		}
-		int sum = 0;
-		res.add(0);
-		for(int num=1; num<=N; num++)
-		{           
-		  if(isPerfect(mat, row, col, num))
-           {
-        	   //res.add(num);
-			  res.add(1);
-			  sum+=1;
-           }
-		  else
-		  {
-			  res.add(0);
-		  }
-		}
-		res.set(0, sum);	
-		return res; 	  
-	}
-	
 	public static String pair_to_string(int row, int col)
 	{
 	   return String.valueOf(row) + String.valueOf(col);	   
 	}
 	
-	public static Map<String, Vector> fill_map(int[][] mat)
+	public static Vector getPossibleValues(int [][] mat, int row, int col)
+	{
+		Vector res = new Vector();
+		if(mat[row][col]!=0)		
+		  return res;	
+		
+		int sum = 0;
+		res.add(0);
+		
+		for(int num=1; num<=N; num++)
+		{           
+		  if(isPerfect(mat, row, col, num))
+           {        	
+			  res.add(1);
+			  sum+=1;
+           }
+		  else		  
+			  res.add(0);		  
+		}
+		res.set(0, sum);	
+		return res; 	  
+	}
+		
+	public static Map<String, Vector> getAllPossibleValues(int[][] mat)
 	{
 		Map<String, Vector> result = new HashMap<String, Vector>();
 		for(int i=0; i<N; i++)
 		{
 			for(int j=0; j<N; j++)
 			{
-				Vector values = getValues2(mat, i, j);
+				Vector values = getPossibleValues(mat, i, j);
 				if(!values.isEmpty())
 				{
 					String key = pair_to_string(i, j);
@@ -181,7 +171,59 @@ static Map<String, Vector> valores_probables;
 		return result;		
 	}
 	
- 
+	public static Vector getVectorRepresentation(Map<String, Vector> values , String key)
+	{
+	   Vector result = new Vector();
+	   Vector value = values.get(key);
+	   for(int i=1; i<value.size(); i++)	    
+		   if((Integer)value.get(i) != 0)		    
+               result.add(i);			   		    	    	   	   
+	   return result;	  
+	}
+	
+	public static boolean allHavePossibleValues(Map<String,Vector> values)
+	{
+		Iterator it = values.keySet().iterator();
+		while(it.hasNext())
+		{
+			String key = (String) it.next();
+			Vector value = values.get(key);
+			if ((Integer)value.get(0) == 0)
+				return false;
+		}
+		return true;
+	}
+	
+	public static void removePossibleValue(int value, Vector keys)  ///// cuidado!!!
+	{
+		for(int i=0; i<keys.size(); i++)
+		{
+			String key = (String) keys.get(i);
+			Vector vector = valores_probables.get(key);
+			if((int)vector.get(value)!=0)
+			{
+				vector.set(value, 0);
+				int size = (int) vector.get(0);			
+				vector.set(0, size-1);
+				valores_probables.put(key, vector);	
+			}									
+		}
+	}
+	
+	public static void insertPossibleValue(int value, Vector keys)  //// cuidado!!  Solo mandar los que fueron removidos
+	{
+		for(int i=0; i<keys.size(); i++)
+		{
+			String key = (String) keys.get(i);
+			Vector vector = valores_probables.get(key);
+			vector.set(value, 1);
+			int size = (int) vector.get(0);
+			vector.set(0, size+1);
+			valores_probables.put(key, vector);
+		}
+	}
+	
+	
 	
 	static void valuesSameRowColBox(int[][] matrix, int row, int col)
 	{
@@ -229,34 +271,22 @@ static Map<String, Vector> valores_probables;
 		
 		//return values;						
 	}
-	
-	public static int[] searchFreeSpace(int[][] matrix)
-	{
-	   for(int i=0; i< N; i++)
-	   {
-		   for(int j=0; j<N; j++)
-		   {
-			   if(matrix[i][j] == 0)
-			   {				  
-				   int [] result = {i,j};				  
-				   return result;  
-			   }				   
-		   }
-	   }
-	     int [] free = {-1,-1};
-		return free;	
-	}
-	
-	
+		
 	
 	static void solveSudoku(int[][] matrix)
 	{		
 		int[] values =  searchFreeSpace(matrix);
 		int row = values[0];
 		int col = values[1];
-		System.out.println(row  + " " +col);
+		String row_col = pair_to_string(row, col);
+		
+		Vector vector = getVectorRepresentation(valores_probables , row_col);
+		
+		System.out.println(vector);
 		
 	}
+	
+	
 	
 	static void printMap(Map<String, Vector> map)
 	{
@@ -276,20 +306,34 @@ static Map<String, Vector> valores_probables;
 		int [][] mat = {{0,0,0,0},{0,2,0,1},{4,0,1,0},{0,0,0,0}};
 		//printM(mat, 4);
 		
-		valores_probables = fill_map(mat);
+		valores_probables = getAllPossibleValues(mat);
+		
+		Vector keys = new Vector();
+		keys.add("00");
+		keys.add("10");
+		keys.add("30");
+		
+		//removePossibleValue(3, keys);
+		insertPossibleValue(4, keys);
+		
+		
+		
+		printMap(valores_probables);		
+		
+		System.out.println(allHavePossibleValues(valores_probables));
+		
 		//solveSudoku(mat);
 		
-		printMap(valores_probables);
+		//System.out.println(allHavePossibleValues(valores_probables));
+		
+		
+		 
 		
 		
 		
 		//valuesSameRowColBox(mat, 0, 0);
 		
-		
-		
-		//fill_map(mat);
-		
-		
+				
 		
 	}
 
