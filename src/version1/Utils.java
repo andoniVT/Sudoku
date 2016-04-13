@@ -194,8 +194,9 @@ static Map<String, Vector> valores_probables;
 		return true;
 	}
 	
-	public static void removePossibleValue(int value, Vector keys)  ///// cuidado!!!
+	public static Vector removePossibleValue(int value, Vector keys)  ///// cuidado!!!
 	{
+		Vector keys_removed = new Vector();
 		for(int i=0; i<keys.size(); i++)
 		{
 			String key = (String) keys.get(i);
@@ -205,9 +206,11 @@ static Map<String, Vector> valores_probables;
 				vector.set(value, 0);
 				int size = (int) vector.get(0);			
 				vector.set(0, size-1);
-				valores_probables.put(key, vector);	
+				valores_probables.put(key, vector);
+				keys_removed.add(key);
 			}									
 		}
+		return keys_removed;
 	}
 	
 	public static void insertPossibleValue(int value, Vector keys)  //// cuidado!!  Solo mandar los que fueron removidos
@@ -273,7 +276,7 @@ static Map<String, Vector> valores_probables;
 	}
 		
 	
-	static void solveSudoku(int[][] matrix)
+	static boolean solveSudoku(int[][] matrix)
 	{		
 		int[] values =  searchFreeSpace(matrix);
 		int row = values[0];
@@ -281,9 +284,31 @@ static Map<String, Vector> valores_probables;
 		String row_col = pair_to_string(row, col);
 		
 		Vector vector = getVectorRepresentation(valores_probables , row_col);
+		for(int i=0; i<vector.size(); i++)
+		{
+			int value_to_insert = (int) vector.get(i);
+			matrix[row][col] = value_to_insert;
+			Vector incident_keys = new Vector(); // llamar a funcion q devuelve los keys indicentes a row,col
+			
+			Vector keys_with_values_removed = removePossibleValue(value_to_insert, incident_keys);
+			
+			boolean pass_forward_checking = allHavePossibleValues(valores_probables);
+			if(pass_forward_checking)
+			{
+				if(solveSudoku(matrix))
+					return true;
+				 matrix[row][col] = 0;				
+			}
+			else
+			{
+			    insertPossibleValue(value_to_insert, keys_with_values_removed);
+			    matrix[row][col] = 0;
+			}
+			
+			//System.out.println(value_to_insert);
+		}
 		
-		System.out.println(vector);
-		
+		return false;		
 	}
 	
 	
@@ -304,31 +329,26 @@ static Map<String, Vector> valores_probables;
 	{
 	
 		int [][] mat = {{0,0,0,0},{0,2,0,1},{4,0,1,0},{0,0,0,0}};
-		//printM(mat, 4);
+		printM(mat, 4);
 		
 		valores_probables = getAllPossibleValues(mat);
 		
-		Vector keys = new Vector();
-		keys.add("00");
-		keys.add("10");
-		keys.add("30");
+		solveSudoku(mat);
 		
-		//removePossibleValue(3, keys);
-		insertPossibleValue(4, keys);
 		
 		
 		
-		printMap(valores_probables);		
+		//removePossibleValue(3, keys);
+		//insertPossibleValue(4, keys);		
+		//printMap(valores_probables);		
 		
-		System.out.println(allHavePossibleValues(valores_probables));
 		
-		//solveSudoku(mat);
+		
+		
 		
 		//System.out.println(allHavePossibleValues(valores_probables));
 		
-		
-		 
-		
+				
 		
 		
 		//valuesSameRowColBox(mat, 0, 0);
