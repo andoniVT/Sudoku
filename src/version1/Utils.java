@@ -130,6 +130,10 @@ static Map<String, Vector> valores_probables;
 	   return String.valueOf(row) + String.valueOf(col);	   
 	}
 	
+	
+	
+	
+	
 	public static Vector getPossibleValues(int [][] mat, int row, int col)
 	{
 		Vector res = new Vector();
