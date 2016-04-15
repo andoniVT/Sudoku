@@ -288,17 +288,14 @@ static Map<String, Vector> valores_probables;
 		
 		int row = values[0];
 		int col = values[1];
-		printM(matrix, 9);
-		System.out.println("\n");
-		
+			
 		String row_col = pair_to_string(row, col);		
 		Vector vector = getVectorRepresentation(valores_probables , row_col);
 		
 		for(int i=0; i<vector.size(); i++)
 		{
 			int value_to_insert = (int) vector.get(i);
-			matrix[row][col] = value_to_insert;
-			//Vector incident_keys = new Vector(); // llamar a funcion q devuelve los keys indicentes a row,col
+			matrix[row][col] = value_to_insert;			
 			Vector incident_keys = valuesSameRowColBox(matrix, row, col);
 			
 			Vector keys_with_values_removed = removePossibleValue(value_to_insert, incident_keys);
@@ -310,14 +307,9 @@ static Map<String, Vector> valores_probables;
 					return true;
 				 matrix[row][col] = 0;				
 			}
-			else
-			{
 			    insertPossibleValue(value_to_insert, keys_with_values_removed);
-			    matrix[row][col] = 0;
-			    
-			}					
-		}
-		
+			    matrix[row][col] = 0;			    							
+		}		
 		return false;		
 	}
 	
@@ -339,7 +331,7 @@ static Map<String, Vector> valores_probables;
 	{
 		
 		Vector matrices  = parseFile("entrada.txt", 9);
-		int [][] matrix = (int[][]) matrices.get(0);
+		int [][] matrix = (int[][]) matrices.get(2);
 		printM(matrix, 9);
 		
 		
@@ -352,10 +344,10 @@ static Map<String, Vector> valores_probables;
 		
 		valores_probables = getAllPossibleValues(matrix);
 		
-		printMap(valores_probables);
+		//printMap(valores_probables);
 		
 		
-		/*
+		
 		if (solveSudoku(matrix))
 		{
 			printM(matrix, 9);
@@ -363,7 +355,7 @@ static Map<String, Vector> valores_probables;
 		else
 		{
 			System.out.println("=(");
-		}*/
+		}
 		
 	
 		
