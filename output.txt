@@ -1,20 +1,475 @@
-0 0 0 0 1 4 0 0 0 
-0 3 0 0 0 0 2 0 0 
-0 7 0 0 0 0 0 0 0 
-0 0 0 9 0 0 0 3 0 
-6 0 1 0 0 0 0 0 0 
-0 0 0 0 0 0 0 8 0 
-2 0 0 0 0 0 1 0 4 
-0 0 0 0 5 0 6 0 0 
-0 0 0 7 0 8 0 0 0 
+Forward Checking
+
+the task has taken 2943 milliseconds
 
 
-9 6 2 3 1 4 8 5 7 
-1 3 4 5 8 7 2 6 9 
-5 7 8 2 9 6 4 1 3 
-8 4 7 9 6 2 5 3 1 
-6 5 1 8 7 3 9 4 2 
-3 2 9 1 4 5 7 8 6 
-2 8 5 6 3 9 1 7 4 
-7 9 3 4 5 1 6 2 8 
-4 1 6 7 2 8 3 9 5 
+Forward Checking
+
+the task has taken 1135 milliseconds
+
+
+Forward Checking
+
+the task has taken 31 milliseconds
+
+
+Forward Checking
+
+the task has taken 130 milliseconds
+
+
+Forward Checking
+
+the task has taken 34869 milliseconds
+
+
+Forward Checking
+
+the task has taken 89 milliseconds
+
+
+Forward Checking
+
+the task has taken 2100 milliseconds
+
+
+Forward Checking
+
+the task has taken 1737 milliseconds
+
+
+Forward Checking
+
+the task has taken 1404 milliseconds
+
+
+Forward Checking
+
+the task has taken 3418 milliseconds
+
+
+Forward Checking
+
+the task has taken 286 milliseconds
+
+
+Forward Checking
+
+the task has taken 42 milliseconds
+
+
+Forward Checking
+
+the task has taken 18 milliseconds
+
+
+Forward Checking
+
+the task has taken 74 milliseconds
+
+
+Forward Checking
+
+the task has taken 1880 milliseconds
+
+
+Forward Checking
+
+the task has taken 312 milliseconds
+
+
+Forward Checking
+
+the task has taken 1801 milliseconds
+
+
+Forward Checking
+
+the task has taken 853 milliseconds
+
+
+Forward Checking
+
+the task has taken 1 milliseconds
+
+
+Forward Checking
+
+the task has taken 7 milliseconds
+
+
+Forward Checking
+
+the task has taken 1441 milliseconds
+
+
+Forward Checking
+
+the task has taken 54 milliseconds
+
+
+Forward Checking
+
+the task has taken 1345 milliseconds
+
+
+Forward Checking
+
+the task has taken 542 milliseconds
+
+
+Forward Checking
+
+the task has taken 3 milliseconds
+
+
+Forward Checking
+
+the task has taken 600 milliseconds
+
+
+Forward Checking
+
+the task has taken 36 milliseconds
+
+
+Forward Checking
+
+the task has taken 118 milliseconds
+
+
+Forward Checking
+
+the task has taken 55 milliseconds
+
+
+Forward Checking
+
+the task has taken 15 milliseconds
+
+
+Forward Checking
+
+the task has taken 27 milliseconds
+
+
+Forward Checking
+
+the task has taken 6 milliseconds
+
+
+Forward Checking
+
+the task has taken 6 milliseconds
+
+
+Forward Checking
+
+the task has taken 842 milliseconds
+
+
+Forward Checking
+
+the task has taken 43 milliseconds
+
+
+Forward Checking
+
+the task has taken 2279 milliseconds
+
+
+Forward Checking
+
+the task has taken 83 milliseconds
+
+
+Forward Checking
+
+the task has taken 12 milliseconds
+
+
+Forward Checking
+
+the task has taken 463 milliseconds
+
+
+Forward Checking
+
+the task has taken 16 milliseconds
+
+
+Forward Checking
+
+the task has taken 36394 milliseconds
+
+
+Forward Checking
+
+the task has taken 129 milliseconds
+
+
+Forward Checking
+
+the task has taken 53 milliseconds
+
+
+Forward Checking
+
+the task has taken 9 milliseconds
+
+
+Forward Checking
+
+the task has taken 21 milliseconds
+
+
+Forward Checking
+
+the task has taken 2642 milliseconds
+
+
+Forward Checking
+
+the task has taken 142 milliseconds
+
+
+Forward Checking
+
+the task has taken 33 milliseconds
+
+
+Forward Checking
+
+the task has taken 141 milliseconds
+
+
+Forward Checking
+
+the task has taken 369 milliseconds
+
+
+Forward Checking
+
+the task has taken 406 milliseconds
+
+
+Forward Checking
+
+the task has taken 73 milliseconds
+
+
+Forward Checking
+
+the task has taken 2 milliseconds
+
+
+Forward Checking
+
+the task has taken 10 milliseconds
+
+
+Forward Checking
+
+the task has taken 237 milliseconds
+
+
+Forward Checking
+
+the task has taken 39 milliseconds
+
+
+Forward Checking
+
+the task has taken 66 milliseconds
+
+
+Forward Checking
+
+the task has taken 241 milliseconds
+
+
+Forward Checking
+
+the task has taken 33 milliseconds
+
+
+Forward Checking
+
+the task has taken 7 milliseconds
+
+
+Forward Checking
+
+the task has taken 13 milliseconds
+
+
+Forward Checking
+
+the task has taken 1536 milliseconds
+
+
+Forward Checking
+
+the task has taken 88 milliseconds
+
+
+Forward Checking
+
+the task has taken 1085 milliseconds
+
+
+Forward Checking
+
+the task has taken 2 milliseconds
+
+
+Forward Checking
+
+the task has taken 119 milliseconds
+
+
+Forward Checking
+
+the task has taken 21 milliseconds
+
+
+Forward Checking
+
+the task has taken 18 milliseconds
+
+
+Forward Checking
+
+the task has taken 158 milliseconds
+
+
+Forward Checking
+
+the task has taken 590 milliseconds
+
+
+Forward Checking
+
+the task has taken 6859 milliseconds
+
+
+Forward Checking
+
+the task has taken 25 milliseconds
+
+
+Forward Checking
+
+the task has taken 157 milliseconds
+
+
+Forward Checking
+
+the task has taken 24 milliseconds
+
+
+Forward Checking
+
+the task has taken 13 milliseconds
+
+
+Forward Checking
+
+the task has taken 634 milliseconds
+
+
+Forward Checking
+
+the task has taken 9 milliseconds
+
+
+Forward Checking
+
+the task has taken 152 milliseconds
+
+
+Forward Checking
+
+the task has taken 16 milliseconds
+
+
+Forward Checking
+
+the task has taken 32 milliseconds
+
+
+Forward Checking
+
+the task has taken 78 milliseconds
+
+
+Forward Checking
+
+the task has taken 41 milliseconds
+
+
+Forward Checking
+
+the task has taken 509 milliseconds
+
+
+Forward Checking
+
+the task has taken 18 milliseconds
+
+
+Forward Checking
+
+the task has taken 14 milliseconds
+
+
+Forward Checking
+
+the task has taken 2 milliseconds
+
+
+Forward Checking
+
+the task has taken 32 milliseconds
+
+
+Forward Checking
+
+the task has taken 11 milliseconds
+
+
+Forward Checking
+
+the task has taken 3679 milliseconds
+
+
+Forward Checking
+
+the task has taken 1 milliseconds
+
+
+Forward Checking
+
+the task has taken 51 milliseconds
+
+
+Forward Checking
+
+the task has taken 6 milliseconds
+
+
+Forward Checking
+
+the task has taken 145 milliseconds
+
+
+Forward Checking
+
+the task has taken 195 milliseconds
+
+
+Forward Checking
+
+the task has taken 3002 milliseconds
+
+

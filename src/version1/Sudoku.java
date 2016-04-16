@@ -20,7 +20,7 @@ public class Sudoku
 	   this.type = type;
 	   this.inputFile = inputFile;
 	   this.matrices = Utils.parseFile(this.inputFile , N);    
-	   this.counter = 0;
+	   this.counter = 0;	   
 	}
 	
 	public int[] searchFreeSpace(int[][] matrix)
@@ -282,25 +282,50 @@ public class Sudoku
 	
 	public void solve()
 	{
-	   if (this.type==0)
+	   for(int i=0; i<matrices.size(); i++)
 	   {
-		   System.out.println("Backtracking");
+		   int [][] matrix = (int[][]) matrices.get(i);
 		   
-		   for(int i=0; i<matrices.size(); i++)
+		   if(this.type==0)
 		   {
-			   int [][] matrix = (int[][]) matrices.get(i);
+			   System.out.println("Backtracking");
+			   long time_start, time_end;
+			   time_start = System.currentTimeMillis();
 			   if(solveSudoku(matrix))
-					Utils.printM(matrix,N);
+					//Utils.printM(matrix,N);
+				   System.out.println("");
 				else
 					System.out.println("Not solution found!");
-			  
-			   System.out.println(this.counter);
+			   time_end = System.currentTimeMillis();
+			   System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
+			   //System.out.println(this.counter);
 			   System.out.println("\n");
-		   }		   		   		   		   		   
+			   
+		   }
+		   if(this.type==1)
+		   {
+			   System.out.println("Forward Checking");
+			   long time_start, time_end;
+			   time_start = System.currentTimeMillis();
+			   this.probable_values = getAllPossibleValues(matrix);
+			   if(solveSudokuFC(matrix))
+				   //Utils.printM(matrix, N);
+				   System.out.println("");
+			   else
+				   System.out.println("Not solution found!");
+			   time_end = System.currentTimeMillis();
+			   System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
+			   //System.out.println(this.counter);
+			   System.out.println("\n");
+			   
+			   
+		   }
+		   if(this.type==2)
+		   {
+			   System.out.println("FC and MVR");
+		   }		   		   		   
 	   }
-		   
-	   if (this.type==1) System.out.println("FC");
-	   if (this.type==2) System.out.println("FC and MVR");	   
+		
 	}
 		
 	
@@ -312,16 +337,11 @@ public class Sudoku
 		 * 2 -> Backtracking with Forward Checking and MVR
 		 * */
 		
-		Sudoku test = new Sudoku(0, "entrada.txt");
+		Sudoku test = new Sudoku(1, "entrada3.txt");
 		test.solve();
 		
-		
-		
-		
-		
-		
-		
-		
+		//System.out.println("=(");
+				
 		
 			
 	}
