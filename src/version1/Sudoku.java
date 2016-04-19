@@ -266,6 +266,18 @@ public class Sudoku
 			Vector keys_with_values_removed = removePossibleValue(value_to_insert, incident_keys);
 			
 			boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
+			if(!pass_forward_checking)
+			{
+				matrix[row][col] = 0;
+				continue;
+			}
+			if(solveSudoku(matrix))
+				return true;
+			 matrix[row][col] = 0;	
+			 insertPossibleValue(value_to_insert, keys_with_values_removed);
+			
+			
+			/*
 			if(pass_forward_checking)
 			{
 				if(solveSudoku(matrix))
@@ -273,7 +285,7 @@ public class Sudoku
 				 matrix[row][col] = 0;				
 			}
 			    insertPossibleValue(value_to_insert, keys_with_values_removed);
-			    matrix[row][col] = 0;			    							
+			    matrix[row][col] = 0;	*/		    							
 		}		
 		return false;
 		
@@ -292,13 +304,16 @@ public class Sudoku
 			   long time_start, time_end;
 			   time_start = System.currentTimeMillis();
 			   if(solveSudoku(matrix))
-					//Utils.printM(matrix,N);
-				   System.out.println("");
+			   {
+				 Utils.printM(matrix,N);
+				   System.out.println("");  
+			   }
+					
 				else
 					System.out.println("Not solution found!");
 			   time_end = System.currentTimeMillis();
 			   System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
-			   //System.out.println(this.counter);
+			   System.out.println(this.counter);
 			   System.out.println("\n");
 			   
 		   }
@@ -309,13 +324,16 @@ public class Sudoku
 			   time_start = System.currentTimeMillis();
 			   this.probable_values = getAllPossibleValues(matrix);
 			   if(solveSudokuFC(matrix))
-				   //Utils.printM(matrix, N);
-				   System.out.println("");
+			   {
+				 Utils.printM(matrix, N);
+				   System.out.println(""); 
+			   }
+				   
 			   else
 				   System.out.println("Not solution found!");
 			   time_end = System.currentTimeMillis();
 			   System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
-			   //System.out.println(this.counter);
+			   System.out.println(this.counter);
 			   System.out.println("\n");
 			   
 			   
@@ -337,10 +355,12 @@ public class Sudoku
 		 * 2 -> Backtracking with Forward Checking and MVR
 		 * */
 		
-		Sudoku test = new Sudoku(1, "entrada3.txt");
+		Sudoku test = new Sudoku(0, "entrada10.txt");
+		Sudoku test2 = new Sudoku(1, "entrada10.txt");
 		test.solve();
+		test2.solve();
 		
-		//System.out.println("=(");
+		System.out.println("\n \n");
 				
 		
 			
