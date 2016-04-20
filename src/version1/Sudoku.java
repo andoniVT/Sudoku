@@ -173,7 +173,7 @@ public class Sudoku
 		}
 	}
 	
-	public Vector valuesSameRowColBox(int[][] matrix, int row, int col)
+	public Vector valuesSameRowColBox(int[][] matrix, int row, int col) //// cambiar
 	{		
 		Map<String, Integer> result = new HashMap<String,Integer>();  		
 		for(int i=0; i<N; i++)
@@ -220,6 +220,30 @@ public class Sudoku
 		}		
 		return values;						
 	}
+	
+	public Vector findMVR()
+	{
+		Vector positions = new Vector();
+		Iterator it = probable_values.keySet().iterator();
+		int menor = 9999;
+		String key_menor = null;		
+		while(it.hasNext())
+		{
+			String key = (String) it.next();
+			Vector values = probable_values.get(key);
+			int value = (int) values.get(0);			
+			if(value<menor)
+			{
+				menor = value;
+				key_menor = key;
+			}
+		}		
+		int row = Integer.parseInt(String.valueOf(key_menor.charAt(0)));
+		int col = Integer.parseInt(String.valueOf(key_menor.charAt(1)));
+		positions.add(row);
+		positions.add(col);					
+		return positions;				
+	}
 		
 	public boolean solveSudoku(int[][] matrix)
 	{
@@ -253,38 +277,75 @@ public class Sudoku
 		int row = values[0];
 		int col = values[1];
 			
-		String row_col = Utils.pair_to_string(row, col);		
-		Vector vector = getVectorRepresentation(this.probable_values , row_col);
 		
-		for(int i=0; i<vector.size(); i++)
+		for(int i=1; i<=9; i++)
 		{
-			int value_to_insert = (int) vector.get(i);
-			matrix[row][col] = value_to_insert;
-			this.counter++;
-			Vector incident_keys = valuesSameRowColBox(matrix, row, col);
-			
-			Vector keys_with_values_removed = removePossibleValue(value_to_insert, incident_keys);
-			
-			boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
-			if(pass_forward_checking)
+			if(isPerfect(matrix, row, col, i))
 			{
+				matrix[row][col] = i;
+				this.counter++;
+				Vector incident_keys = valuesSameRowColBox(matrix, row, col);
+				Vector keys_with_values_removed = removePossibleValue(i, incident_keys);
+				boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
+				if(!pass_forward_checking)
+				{
+					matrix[row][col] = 0;
+					insertPossibleValue(i, keys_with_values_removed);
+					continue;
+				}
 				if(solveSudoku(matrix))
+				{					
 					return true;
-				 matrix[row][col] = 0;
+				}
+				insertPossibleValue(i, keys_with_values_removed);
+				matrix[row][col] = 0;
 			}
-				
-			 insertPossibleValue(value_to_insert, keys_with_values_removed);
-			 matrix[row][col] = 0; 
-			
-			    							
-		}		
+		}	
 		return false;	
+	}
+	
+	public boolean solveSudokuFC_MVR(int[][] matrix)
+	{
+		int[] values =  searchFreeSpace(matrix);
+		if(values[0]==-1)
+			return true;
+		
+		Vector position = findMVR();
+		int row = (int) position.get(0);
+		int col = (int) position.get(1);
+		
+		for(int i=1; i<=9; i++)
+		{
+			if(isPerfect(matrix, row, col, i))
+			{
+				matrix[row][col] = i;
+				this.counter++;
+				Vector incident_keys = valuesSameRowColBox(matrix, row, col);
+				Vector keys_with_values_removed = removePossibleValue(i, incident_keys);
+				boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
+				if(!pass_forward_checking)
+				{
+					matrix[row][col] = 0;
+					insertPossibleValue(i, keys_with_values_removed);
+					continue;
+				}
+				if(solveSudoku(matrix))
+				{					
+					return true;
+				}
+				insertPossibleValue(i, keys_with_values_removed);
+				matrix[row][col] = 0;
+			}
+		}	
+		return false;
 	}
 	
 	
 	public void solve()
 	{
-	   for(int i=0; i<matrices.size(); i++)
+	   Vector tiempos = new Vector();
+	   Vector asignaciones = new Vector();
+	  for(int i=0; i<matrices.size(); i++)
 	   {
 		   int [][] matrix = (int[][]) matrices.get(i);
 		   
@@ -296,15 +357,18 @@ public class Sudoku
 			   if(solveSudoku(matrix))
 			   {
 				 //Utils.printM(matrix,N);
-				   System.out.println("");  
+				  // System.out.println("");  
 			   }
 					
 				else
 					System.out.println("Not solution found!");
 			   time_end = System.currentTimeMillis();
-			   System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
+			   //System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
+			   tiempos.add(time_end-time_start);
 			   //System.out.println(this.counter);
+			   asignaciones.add(this.counter);
 			   System.out.println("\n");
+			   this.counter=0;
 			   
 		   }
 		   if(this.type==1)
@@ -316,24 +380,43 @@ public class Sudoku
 			   if(solveSudokuFC(matrix))
 			   {
 				 //Utils.printM(matrix, N);
-				   System.out.println(""); 
+				  // System.out.println(""); 
 			   }
 				   
 			   else
 				   System.out.println("Not solution found!");
 			   time_end = System.currentTimeMillis();
-			   System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
+			   //System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
+			   tiempos.add(time_end-time_start);		
 			   //System.out.println(this.counter);
+			   asignaciones.add(this.counter);
 			   System.out.println("\n");
-			   
+			   this.counter=0;
 			   
 		   }
 		   if(this.type==2)
 		   {
 			   System.out.println("FC and MVR");
+			   long time_start, time_end;
+			   time_start = System.currentTimeMillis();
+			   this.probable_values = getAllPossibleValues(matrix);
+			   if(solveSudokuFC_MVR(matrix))
+			   {
+				   //Utils.printM(matrix, N);
+				   
+			   }
+			   else
+				   System.out.println("Not solution found!"); 
+			   time_end = System.currentTimeMillis();
+			   tiempos.add(time_end-time_start);
+			   asignaciones.add(this.counter);
+			   this.counter=0;
 		   }		   		   		   
 	   }
 		
+	  for(int i=0; i<tiempos.size();i++)
+		  System.out.println(tiempos.get(i));
+	  
 	}
 		
 	
@@ -345,10 +428,17 @@ public class Sudoku
 		 * 2 -> Backtracking with Forward Checking and MVR
 		 * */
 		
-		Sudoku test = new Sudoku(1, "entrada.txt");
+		//Sudoku test = new Sudoku(0, "entrada10.txt");
 		//Sudoku test2 = new Sudoku(1, "entrada10.txt");
-		test.solve();
+		//test.solve();
 		//test2.solve();
+		Sudoku test = new Sudoku(0, "entrada.txt");
+		Sudoku test2 = new Sudoku(1, "entrada.txt");
+		Sudoku test3 = new Sudoku(2, "entrada.txt");
+		test.solve();
+		test2.solve();
+		test3.solve();
+		
 		
 		System.out.println("\n \n");
 				

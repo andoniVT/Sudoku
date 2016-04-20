@@ -1,478 +1,953 @@
-Forward Checking
+Backtracking
 
-the task has taken 1684 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 676 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 15 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 136 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 23881 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 54 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 1429 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 1056 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 931 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 2058 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 219 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 35 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 13 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 43 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 1215 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 240 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 1294 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 607 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 1 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 5 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 944 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 28 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 905 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 391 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 2 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 379 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 25 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 65 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 33 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 9 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 18 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 6 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 4 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 589 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 29 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 1699 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 52 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 8 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 344 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 13 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 24575 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 81 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 35 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 3 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 13 milliseconds
 
+Backtracking
 
-Forward Checking
 
-the task has taken 1566 milliseconds
+Backtracking
 
 
-Forward Checking
+Backtracking
 
-the task has taken 147 milliseconds
 
+Backtracking
 
-Forward Checking
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
+
+
+Backtracking
 
-the task has taken 29 milliseconds
 
+1674
+725
+25
+118
+23365
+67
+1330
+1094
+910
+2090
+200
+26
+11
+39
+1093
+173
+1301
+581
+0
+4
+909
+28
+826
+389
+1
+426
+39
+98
+53
+13
+18
+3
+5
+616
+37
+1507
+49
+7
+311
+10
+23507
+76
+32
+3
+11
+1542
+92
+21
+75
+216
+295
+44
+1
+4
+147
+31
+42
+156
+21
+4
+9
+865
+57
+777
+0
+78
+14
+12
+115
+425
+4321
+16
+87
+18
+7
+400
+5
+88
+9
+19
+63
+25
+327
+11
+10
+1
+18
+7
+2410
+0
+31
+4
+82
+115
+2017
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 110 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 262 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 298 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 45 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 1 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 3 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 151 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 27 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 43 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 146 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 26 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 5 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 13 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 1054 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 60 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 832 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 1 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 87 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 14 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 13 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 125 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 352 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 4422 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 44 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 144 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 24 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 9 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 397 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 7 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 86 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 9 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 20 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 51 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 26 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 336 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 11 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 9 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 2 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 18 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 7 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 2554 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 1 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 31 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 5 milliseconds
+
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 87 milliseconds
 
+Forward Checking
 
+
 Forward Checking
+
 
-the task has taken 128 milliseconds
+Forward Checking
 
 
 Forward Checking
 
-the task has taken 2119 milliseconds
+
+Forward Checking
 
 
+1960
+678
+16
+90
+24825
+63
+1364
+1039
+879
+2279
+161
+29
+12
+41
+1175
+195
+1192
+615
+0
+6
+907
+39
+977
+405
+2
+378
+24
+66
+35
+13
+28
+6
+10
+524
+29
+1444
+52
+8
+309
+12
+23258
+77
+37
+3
+13
+1621
+100
+24
+74
+224
+274
+55
+2
+4
+158
+24
+42
+157
+23
+6
+9
+891
+60
+726
+1
+76
+14
+13
+103
+359
+4208
+18
+91
+17
+8
+437
+6
+94
+10
+21
+51
+26
+358
+12
+11
+2
+18
+8
+2465
+0
+33
+4
+82
+148
+2120
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+FC and MVR
+1423
+512
+9
+393
+16715
+766
+1138
+2198
+952
+1593
+2029
+26
+12
+32
+739
+2166
+842
+1109
+2
+1
+3282
+18
+372
+367
+5
+361
+57
+1758
+31
+225
+61
+4
+5
+185
+14
+633
+33
+9
+325
+8
+11704
+159
+9
+1
+8
+1161
+441
+11
+149
+2102
+85
+8
+4
+14
+168
+32
+78
+124
+32
+17
+4
+641
+24
+406
+0
+81
+195
+142
+30
+602
+2943
+10
+223
+12
+6
+302
+13
+63
+162
+15
+41
+32
+171
+6
+9
+2
+19
+9
+1336
+13
+24
+25
+48
+60
+4702
 
  
 
