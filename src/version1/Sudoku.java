@@ -8,13 +8,23 @@ import java.util.Vector;
 
 public class Sudoku 
 {
-	 int N = 9;
-	 int type;
-	 String inputFile;
-	 Vector matrices;
-	 int counter;
-	 Map<String,Vector> probable_values;
-	
+	 int N = 9; /// size of sudoku
+	 int type;  /// type of heuristic to apply
+	 String inputFile;    /// input file : entrada or entrada10
+	 Vector matrices;   /// matrices gotten from input file
+	 int counter;   /// number of attributions
+	 
+	 /*   map for represent probable values for each free cell of matrix
+	  *   key : position (row,col) converted to string
+	  *   value: first element of vector represent the number of probable values for key and the rest represent which are the probable values
+	  * */
+	 Map<String,Vector> probable_values; 
+	 
+	 
+	 /*
+	  *     Class constructor whose parameters are type of heuristic and input file
+	  * 
+	  * */
 	public Sudoku(int type, String inputFile) throws IOException
 	{
 	   this.type = type;
@@ -23,6 +33,11 @@ public class Sudoku
 	   this.counter = 0;	   
 	}
 	
+	
+	 /*
+	  *       Looks for first position of matrix which have 0 value      
+	  * 
+	  * */
 	public int[] searchFreeSpace(int[][] matrix)
 	{
 	   for(int i=0; i< N; i++)
@@ -40,13 +55,23 @@ public class Sudoku
 		return free;	
 	}
 	
+	
+	 /*
+	  *  Verify if value is legal in the specified row
+	  * 
+	  * */
 	public boolean isInRow(int[][] matrix, int row, int value)
 	{
 		for(int i=0; i<N; i++)		
 			if(matrix[row][i]==value) return true;		
 		return false;
 	}
+
 	
+	 /*
+	  *    Verify if value is legal in the specified col 
+	  * 
+	  * */
 	public boolean isInCol(int[][] matrix, int col, int value)
 	{
 		for(int i=0; i<N; i++)
@@ -54,6 +79,11 @@ public class Sudoku
 		return false;
 	}
 	
+	
+	 /*
+	  *   Verify if value is legal in a box
+	  * 
+	  * */
 	public boolean isInBox(int[][] matrix, int row, int col, int value)
 	{
 		int beginRow = row - row%3 ;
@@ -67,6 +97,11 @@ public class Sudoku
 		return false;
 	}
 	
+	
+	 /*
+	  *     Verify if a value is legal in a row, col, box
+	  * 
+	  * */
 	public boolean isPerfect(int[][] matrix, int row, int col, int value)
 	{
 		if (!isInRow(matrix, row, value) && !isInCol(matrix, col, value) && !isInBox(matrix, row, col, value))
@@ -74,6 +109,11 @@ public class Sudoku
 		return false;
 	}
 	
+	
+	 /*
+	  *    Generate the vector of posible values for a specified position (row,col) of the matrix
+	  * 
+	  * */
 	public Vector getPossibleValues(int [][] mat, int row, int col)
 	{
 		Vector res = new Vector();
@@ -97,6 +137,11 @@ public class Sudoku
 		return res; 	  
 	}
 	
+	
+	 /*
+	  *  Generate the map which contents all of possible values of every free element of the matrix
+	  * 
+	  * */
 	public Map<String, Vector> getAllPossibleValues(int[][] mat)
 	{
 		Map<String, Vector> result = new HashMap<String, Vector>();
@@ -114,20 +159,12 @@ public class Sudoku
 		}		
 		return result;		
 	}
+		
 	
-	public Vector getVectorRepresentation(Map<String, Vector> values , String key) /////////  cambiar!!!
-	{
-		Vector result = new Vector();
-	   if (values.containsKey(key))
-	   {
-		   Vector value = values.get(key);
-		   for(int i=1; i<value.size(); i++)	    
-			   if((Integer)value.get(i) != 0)		    
-	               result.add(i);   
-	   }			   			   		    	    	   	   
-	   return result;	  
-	}
-	
+	 /*
+	  *   Verify if all of elements has at least one possible value
+	  * 
+	  * */
 	public boolean allHavePossibleValues(Map<String,Vector> values)
 	{
 		Iterator it = values.keySet().iterator();
@@ -141,7 +178,12 @@ public class Sudoku
 		return true;
 	}
 	
-	public Vector removePossibleValue(int value, Vector keys)  ///// cuidado!!!
+	
+	 /*
+	  *   Given a vector of keys(positions row-col) , a function removes possible values equal to value parameter 
+	  * 
+	  * */
+	public Vector removePossibleValue(int value, Vector keys)  
 	{
 		Vector keys_removed = new Vector();
 		for(int i=0; i<keys.size(); i++)
@@ -160,7 +202,12 @@ public class Sudoku
 		return keys_removed;
 	}
 	
-	public void insertPossibleValue(int value, Vector keys)  //// cuidado!!  Solo mandar los que fueron removidos
+	
+	 /*
+	  *   Given a vector of keys(positions row-col) , a function re-insert possible values equal to value parameter
+	  * 
+	  * */
+	public void insertPossibleValue(int value, Vector keys) 
 	{
 		for(int i=0; i<keys.size(); i++)
 		{
@@ -173,7 +220,13 @@ public class Sudoku
 		}
 	}
 	
-	public Vector valuesSameRowColBox(int[][] matrix, int row, int col) //// cambiar
+	
+	 /*
+	  *  get the incident values of a position (row,col) 
+	  *  incident values are values in the same row, col ,box
+	  * 
+	  * */
+	public Vector valuesSameRowColBox(int[][] matrix, int row, int col) 
 	{		
 		Map<String, Integer> result = new HashMap<String,Integer>();  		
 		for(int i=0; i<N; i++)
@@ -208,10 +261,8 @@ public class Sudoku
 		}
 		
 		String row_col = Utils.pair_to_string(row, col);
-		result.remove(row_col);
-		
-		Vector values = new Vector();
-		
+		result.remove(row_col);		
+		Vector values = new Vector();		
 		Iterator it = result.keySet().iterator();
 		while(it.hasNext())
 		{
@@ -221,6 +272,11 @@ public class Sudoku
 		return values;						
 	}
 	
+	
+	 /*
+	  *   find the position (row,col) of the minimum value remanecente 
+	  * 
+	  * */
 	public Vector findMVR()
 	{
 		Vector positions = new Vector();
@@ -244,7 +300,12 @@ public class Sudoku
 		positions.add(col);					
 		return positions;				
 	}
-		
+
+	
+	 /*
+	  *   solve sudoku using simple backtracking
+	  * 
+	  * */
 	public boolean solveSudoku(int[][] matrix)
 	{
 		int[] values =  searchFreeSpace(matrix);
@@ -268,16 +329,29 @@ public class Sudoku
 		return false;
 	}
 	
-	public boolean solveSudokuFC(int[][] matrix)
+	
+	 /*
+	  *     solve sudoku with heuristic Forward checking or MVR
+	  * 
+	  * */
+	public boolean solveSudokuHeuristic(int[][] matrix)
 	{
 		int[] values =  searchFreeSpace(matrix);
 		if(values[0]==-1)
 			return true;
-		
-		int row = values[0];
-		int col = values[1];
-			
-		
+		int row, col;
+		if(this.type==1) /// Forward Checking
+		{
+			row = values[0];
+			col = values[1];				
+		}
+		else   /// MVR
+		{
+			Vector position = findMVR();
+			row = (int) position.get(0);
+		    col = (int) position.get(1);
+		}
+				
 		for(int i=1; i<=9; i++)
 		{
 			if(isPerfect(matrix, row, col, i))
@@ -293,54 +367,21 @@ public class Sudoku
 					insertPossibleValue(i, keys_with_values_removed);
 					continue;
 				}
-				if(solveSudoku(matrix))
-				{					
+				if(solveSudoku(matrix))								
 					return true;
-				}
+				
 				insertPossibleValue(i, keys_with_values_removed);
 				matrix[row][col] = 0;
 			}
 		}	
 		return false;	
 	}
+
 	
-	public boolean solveSudokuFC_MVR(int[][] matrix)
-	{
-		int[] values =  searchFreeSpace(matrix);
-		if(values[0]==-1)
-			return true;
-		
-		Vector position = findMVR();
-		int row = (int) position.get(0);
-		int col = (int) position.get(1);
-		
-		for(int i=1; i<=9; i++)
-		{
-			if(isPerfect(matrix, row, col, i))
-			{
-				matrix[row][col] = i;
-				this.counter++;
-				Vector incident_keys = valuesSameRowColBox(matrix, row, col);
-				Vector keys_with_values_removed = removePossibleValue(i, incident_keys);
-				boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
-				if(!pass_forward_checking)
-				{
-					matrix[row][col] = 0;
-					insertPossibleValue(i, keys_with_values_removed);
-					continue;
-				}
-				if(solveSudoku(matrix))
-				{					
-					return true;
-				}
-				insertPossibleValue(i, keys_with_values_removed);
-				matrix[row][col] = 0;
-			}
-		}	
-		return false;
-	}
-	
-	
+	 /*
+	  * 
+	  * 
+	  * */
 	public void solve()
 	{
 	   Vector tiempos = new Vector();
@@ -362,12 +403,9 @@ public class Sudoku
 					
 				else
 					System.out.println("Not solution found!");
-			   time_end = System.currentTimeMillis();
-			   //System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
-			   tiempos.add(time_end-time_start);
-			   //System.out.println(this.counter);
-			   asignaciones.add(this.counter);
-			   System.out.println("\n");
+			   time_end = System.currentTimeMillis();			   
+			   tiempos.add(time_end-time_start);			  
+			   asignaciones.add(this.counter);			   
 			   this.counter=0;
 			   
 		   }
@@ -377,7 +415,7 @@ public class Sudoku
 			   long time_start, time_end;
 			   time_start = System.currentTimeMillis();
 			   this.probable_values = getAllPossibleValues(matrix);
-			   if(solveSudokuFC(matrix))
+			   if(solveSudokuHeuristic(matrix))
 			   {
 				 //Utils.printM(matrix, N);
 				  // System.out.println(""); 
@@ -386,11 +424,8 @@ public class Sudoku
 			   else
 				   System.out.println("Not solution found!");
 			   time_end = System.currentTimeMillis();
-			   //System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
-			   tiempos.add(time_end-time_start);		
-			   //System.out.println(this.counter);
-			   asignaciones.add(this.counter);
-			   System.out.println("\n");
+			   tiempos.add(time_end-time_start);					  
+			   asignaciones.add(this.counter);			   
 			   this.counter=0;
 			   
 		   }
@@ -400,9 +435,10 @@ public class Sudoku
 			   long time_start, time_end;
 			   time_start = System.currentTimeMillis();
 			   this.probable_values = getAllPossibleValues(matrix);
-			   if(solveSudokuFC_MVR(matrix))
+			   if(solveSudokuHeuristic(matrix))
 			   {
 				   //Utils.printM(matrix, N);
+				// System.out.println("");
 				   
 			   }
 			   else
@@ -428,10 +464,6 @@ public class Sudoku
 		 * 2 -> Backtracking with Forward Checking and MVR
 		 * */
 		
-		//Sudoku test = new Sudoku(0, "entrada10.txt");
-		//Sudoku test2 = new Sudoku(1, "entrada10.txt");
-		//test.solve();
-		//test2.solve();
 		Sudoku test = new Sudoku(0, "entrada.txt");
 		Sudoku test2 = new Sudoku(1, "entrada.txt");
 		Sudoku test3 = new Sudoku(2, "entrada.txt");
