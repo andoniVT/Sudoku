@@ -12,7 +12,7 @@ def convert(vector):
 
 
 def read():
-	fileName = "datos.txt"
+	fileName = "datos2.txt"
 	file = open(fileName, 'r')
 	matrix = []
 	for i in file:
@@ -52,14 +52,28 @@ if __name__ == '__main__':
 	vector_b = np.sort(vector_b)
 	vector_fc = np.sort(vector_fc)
 	vector_mvr = np.sort(vector_mvr)
-	val = max(vector_mvr)
+	max_value = max([max(vector_mvr) , max(vector_b) , max(vector_mvr)])
+	 
+	
 
 
-	plt.plot(columnas, vector_b, 'ro')
-	plt.plot(columnas, vector_fc, 'go')
-	plt.plot(columnas, vector_mvr, 'bo')
+	fig = plt.figure(figsize=(15, 8), dpi=80)
+	ax = plt.subplot(111)
+	#l1, =plt.plot(columnas, vector_b, 'ro' , label='B')
+	#l2,=plt.plot(columnas, vector_fc, 'go' , label='FC')
+	#l3,=plt.plot(columnas, vector_mvr, 'bo' , label='MVR')
+	ax.plot(columnas, vector_b, 'ro' , label='B')
+	ax.plot(columnas, vector_fc, 'go' , label='FC')
+	ax.plot(columnas, vector_mvr, 'bo' , label='MVR')
+
+
+	#plt.legend(handles=[l1, l2, l3])
+	ax.legend(bbox_to_anchor=(1.1, 1.05))
 	#plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-	plt.axis([0, 95, 0, val])
+	plt.yscale('log')	
+	plt.xscale('linear')
+	#plt.xscale('log')	
+	plt.axis([0, 95, 0, max_value])
 	
 	plt.show()
 

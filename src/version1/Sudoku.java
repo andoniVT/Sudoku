@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Vector;
 
 public class Sudoku 
@@ -391,14 +392,13 @@ public class Sudoku
 		   int [][] matrix = (int[][]) matrices.get(i);
 		   
 		   if(this.type==0)
-		   {
-			   System.out.println("Backtracking");
+		   {			   
 			   long time_start, time_end;
 			   time_start = System.currentTimeMillis();
 			   if(solveSudoku(matrix))
 			   {
-				 //Utils.printM(matrix,N);
-				  // System.out.println("");  
+				 Utils.printM(matrix,N);
+				  System.out.println("");  
 			   }
 					
 				else
@@ -409,16 +409,15 @@ public class Sudoku
 			   this.counter=0;
 			   
 		   }
-		   if(this.type==1)
-		   {
-			   System.out.println("Forward Checking");
+		   else
+		   {		  
 			   long time_start, time_end;
 			   time_start = System.currentTimeMillis();
 			   this.probable_values = getAllPossibleValues(matrix);
 			   if(solveSudokuHeuristic(matrix))
 			   {
-				 //Utils.printM(matrix, N);
-				  // System.out.println(""); 
+				 Utils.printM(matrix, N);
+				 System.out.println(""); 
 			   }
 				   
 			   else
@@ -426,32 +425,12 @@ public class Sudoku
 			   time_end = System.currentTimeMillis();
 			   tiempos.add(time_end-time_start);					  
 			   asignaciones.add(this.counter);			   
-			   this.counter=0;
-			   
-		   }
-		   if(this.type==2)
-		   {
-			   System.out.println("FC and MVR");
-			   long time_start, time_end;
-			   time_start = System.currentTimeMillis();
-			   this.probable_values = getAllPossibleValues(matrix);
-			   if(solveSudokuHeuristic(matrix))
-			   {
-				   //Utils.printM(matrix, N);
-				// System.out.println("");
-				   
-			   }
-			   else
-				   System.out.println("Not solution found!"); 
-			   time_end = System.currentTimeMillis();
-			   tiempos.add(time_end-time_start);
-			   asignaciones.add(this.counter);
-			   this.counter=0;
-		   }		   		   		   
+			   this.counter=0;			   
+		   }			   		   		  
 	   }
 		
-	  for(int i=0; i<tiempos.size();i++)
-		  System.out.println(tiempos.get(i));
+	  //for(int i=0; i<asignaciones.size();i++)
+		//  System.out.println(asignaciones.get(i));
 	  
 	}
 		
@@ -463,18 +442,21 @@ public class Sudoku
 		 * 1 -> Backtracking with Forward Checking
 		 * 2 -> Backtracking with Forward Checking and MVR
 		 * */
-		
-		Sudoku test = new Sudoku(0, "entrada.txt");
-		Sudoku test2 = new Sudoku(1, "entrada.txt");
-		Sudoku test3 = new Sudoku(2, "entrada.txt");
-		test.solve();
-		test2.solve();
-		test3.solve();
-		
-		
-		System.out.println("\n \n");
+						
+		String test_default = "entrada.txt",  test_10 = "entrada10.txt";
+		Vector inputFiles = new Vector();
+		inputFiles.add(test_default); inputFiles.add(test_10);
 				
+		Scanner reader = new Scanner(System.in);
+		System.out.println("Enter a type of test (0->Backtracking, 1->Forward Checking, 2->MVR)");
+		int type = reader.nextInt();
+		System.out.println("Enter option for input test (0->90 tests,1->10 tests)");
+		int input = reader.nextInt();		
 		
-			
+		Sudoku test = new Sudoku(type, (String) inputFiles.get(input));
+		test.solve();		
+					
+		System.out.println("\n \n");
+									
 	}
 }

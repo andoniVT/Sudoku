@@ -1,953 +1,105 @@
-Backtracking
+Enter a type of test (0->Backtracking, 1->Forward Checking, 2->MVR)
+Enter option for input test (0->90 tests,1->10 tests)
+4 1 7 3 6 9 8 2 5 
+6 3 2 1 5 8 9 4 7 
+9 5 8 7 2 4 3 1 6 
+8 2 5 4 3 7 1 6 9 
+7 9 1 5 8 6 4 3 2 
+3 4 6 9 1 2 7 5 8 
+2 8 9 6 4 3 5 7 1 
+5 7 3 2 9 1 6 8 4 
+1 6 4 8 7 5 2 9 3 
+
+5 2 7 3 1 6 4 8 9 
+8 9 6 5 4 2 7 3 1 
+3 1 4 9 8 7 5 6 2 
+1 7 2 4 5 3 8 9 6 
+6 8 9 2 7 1 3 5 4 
+4 5 3 6 9 8 2 1 7 
+9 4 1 8 2 5 6 7 3 
+7 6 5 1 3 4 9 2 8 
+2 3 8 7 6 9 1 4 5 
+
+6 1 7 4 5 9 8 2 3 
+2 4 8 7 3 6 9 1 5 
+5 3 9 1 2 8 4 6 7 
+9 8 2 5 6 4 3 7 1 
+3 7 4 2 9 1 5 8 6 
+1 5 6 8 7 3 2 9 4 
+8 2 3 6 4 7 1 5 9 
+7 9 1 3 8 5 6 4 2 
+4 6 5 9 1 2 7 3 8 
+
+4 8 7 3 1 2 6 9 5 
+5 9 3 6 8 4 2 7 1 
+1 2 6 5 9 7 3 8 4 
+7 3 5 8 4 9 1 6 2 
+9 1 4 2 6 5 8 3 7 
+2 6 8 7 3 1 5 4 9 
+8 5 1 4 7 6 9 2 3 
+3 7 9 1 2 8 4 5 6 
+6 4 2 9 5 3 7 1 8 
+
+9 6 2 3 1 4 8 5 7 
+1 3 4 5 8 7 2 6 9 
+5 7 8 2 9 6 4 1 3 
+8 4 7 9 6 2 5 3 1 
+6 5 1 8 7 3 9 4 2 
+3 2 9 1 4 5 7 8 6 
+2 8 5 6 3 9 1 7 4 
+7 9 3 4 5 1 6 2 8 
+4 1 6 7 2 8 3 9 5 
+
+4 1 6 8 3 7 5 2 9 
+9 8 2 4 6 5 3 7 1 
+7 3 5 1 2 9 4 6 8 
+5 7 1 2 9 8 6 4 3 
+2 9 3 7 4 6 1 8 5 
+8 6 4 3 5 1 2 9 7 
+6 4 7 9 1 3 8 5 2 
+3 5 9 6 8 2 7 1 4 
+1 2 8 5 7 4 9 3 6 
+
+6 8 2 1 5 4 3 7 9 
+9 5 1 7 6 3 8 4 2 
+3 7 4 8 9 2 1 6 5 
+4 3 7 5 2 8 9 1 6 
+8 1 6 9 3 7 2 5 4 
+2 9 5 4 1 6 7 3 8 
+5 6 8 2 7 1 4 9 3 
+7 2 9 3 4 5 6 8 1 
+1 4 3 6 8 9 5 2 7 
+
+6 5 2 4 8 1 9 3 7 
+8 3 4 6 7 9 1 5 2 
+9 7 1 3 2 5 8 6 4 
+4 6 7 8 1 2 5 9 3 
+3 1 5 7 9 4 6 2 8 
+2 9 8 5 6 3 4 7 1 
+1 8 6 9 3 7 2 4 5 
+5 2 3 1 4 6 7 8 9 
+7 4 9 2 5 8 3 1 6 
+
+6 8 2 1 5 3 4 7 9 
+9 5 1 7 6 4 8 3 2 
+3 7 4 8 9 2 1 6 5 
+4 3 7 5 2 8 9 1 6 
+8 1 6 9 4 7 2 5 3 
+2 9 5 3 1 6 7 4 8 
+5 6 8 2 7 1 3 9 4 
+7 2 9 4 3 5 6 8 1 
+1 4 3 6 8 9 5 2 7 
+
+7 9 2 3 5 1 6 4 8 
+5 4 3 7 8 6 1 2 9 
+6 8 1 4 2 9 5 3 7 
+1 5 7 6 4 8 2 9 3 
+9 2 4 1 3 7 8 6 5 
+8 3 6 2 9 5 4 7 1 
+3 6 8 5 7 2 9 1 4 
+4 1 9 8 6 3 7 5 2 
+2 7 5 9 1 4 3 8 6 
 
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-Backtracking
-
-
-1674
-725
-25
-118
-23365
-67
-1330
-1094
-910
-2090
-200
-26
-11
-39
-1093
-173
-1301
-581
-0
-4
-909
-28
-826
-389
-1
-426
-39
-98
-53
-13
-18
-3
-5
-616
-37
-1507
-49
-7
-311
-10
-23507
-76
-32
-3
-11
-1542
-92
-21
-75
-216
-295
-44
-1
-4
-147
-31
-42
-156
-21
-4
-9
-865
-57
-777
-0
-78
-14
-12
-115
-425
-4321
-16
-87
-18
-7
-400
-5
-88
-9
-19
-63
-25
-327
-11
-10
-1
-18
-7
-2410
-0
-31
-4
-82
-115
-2017
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-Forward Checking
-
-
-1960
-678
-16
-90
-24825
-63
-1364
-1039
-879
-2279
-161
-29
-12
-41
-1175
-195
-1192
-615
-0
-6
-907
-39
-977
-405
-2
-378
-24
-66
-35
-13
-28
-6
-10
-524
-29
-1444
-52
-8
-309
-12
-23258
-77
-37
-3
-13
-1621
-100
-24
-74
-224
-274
-55
-2
-4
-158
-24
-42
-157
-23
-6
-9
-891
-60
-726
-1
-76
-14
-13
-103
-359
-4208
-18
-91
-17
-8
-437
-6
-94
-10
-21
-51
-26
-358
-12
-11
-2
-18
-8
-2465
-0
-33
-4
-82
-148
-2120
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-FC and MVR
-1423
-512
-9
-393
-16715
-766
-1138
-2198
-952
-1593
-2029
-26
-12
-32
-739
-2166
-842
-1109
-2
-1
-3282
-18
-372
-367
-5
-361
-57
-1758
-31
-225
-61
-4
-5
-185
-14
-633
-33
-9
-325
-8
-11704
-159
-9
-1
-8
-1161
-441
-11
-149
-2102
-85
-8
-4
-14
-168
-32
-78
-124
-32
-17
-4
-641
-24
-406
-0
-81
-195
-142
-30
-602
-2943
-10
-223
-12
-6
-302
-13
-63
-162
-15
-41
-32
-171
-6
-9
-2
-19
-9
-1336
-13
-24
-25
-48
-60
-4702
 
  
 
