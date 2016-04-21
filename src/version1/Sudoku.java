@@ -287,8 +287,11 @@ public class Sudoku
 		while(it.hasNext())
 		{
 			String key = (String) it.next();
-			int row = Integer.parseInt(String.valueOf(key.charAt(0)));
-			int col = Integer.parseInt(String.valueOf(key.charAt(1)));
+			Vector position = Utils.string_to_pair(key);
+			
+			int row = (int) position.get(0);
+			int col = (int) position.get(1);
+			
 			Vector values = probable_values.get(key);
 			int value = (int) values.get(0);			
 			if(value<menor && matrix[row][col]==0)
@@ -298,58 +301,27 @@ public class Sudoku
 			}
 		}
 		
-		
-		int row = Integer.parseInt(String.valueOf(key_menor.charAt(0)));
-		int col = Integer.parseInt(String.valueOf(key_menor.charAt(1)));
+		Vector position = Utils.string_to_pair(key_menor);
+		int row = (int) position.get(0);
+		int col = (int) position.get(1);
 		positions.add(row);
 		positions.add(col);					
 		return positions;				
 	}
-
 	
 	 /*
-	  *   solve sudoku using simple backtracking
+	  *     solve sudoku with Backtracking , Forward Checking or  MVR
 	  * 
 	  * */
 	public boolean solveSudoku(int[][] matrix)
-	{
-		int[] values =  searchFreeSpace(matrix);
-		if(values[0]==-1)
-			return true;
-		int row = values[0];
-		int col = values[1];
-		
-		for(int i=1; i<=N; i++)
-		{
-			if(isPerfect(matrix, row, col, i))
-			{
-				matrix[row][col] = i;
-				this.counter++;
-								
-				if(solveSudoku(matrix))									
-					return true;						
-				matrix[row][col] = 0;				
-			}
-		}		
-		return false;
-	}
-	
-	
-	 /*
-	  *     solve sudoku with heuristic Forward checking or MVR
-	  * 
-	  * */
-	public boolean solveSudokuHeuristic(int[][] matrix)
 	{		
-		//Utils.printM(matrix, 9);
-		//System.out.println("\n");
 	
-		int[] values =  searchFreeSpace(matrix);
+		int[] values = searchFreeSpace(matrix);
 		if(values[0]==-1)
 			return true;
 				
 		int row, col;
-		if(this.type==1) /// Forward Checking
+		if(this.type==0 || this.type==1) ///Backtracking or Forward Checking
 		{
 			row = values[0];
 			col = values[1];				
@@ -359,7 +331,6 @@ public class Sudoku
 			Vector position = findMVR(matrix);
 			row = (int) position.get(0);
 		    col = (int) position.get(1);
-		    //System.out.println("Position MVR: " + row + " " + col);
 		}				
 				
 		for(int i=1; i<=9; i++)
@@ -368,20 +339,25 @@ public class Sudoku
 			{
 				matrix[row][col] = i;
 				this.counter++;
-				Vector incident_keys = valuesSameRowColBox(matrix, row, col);
-				Vector keys_with_values_removed = removePossibleValue(i, incident_keys);
-				boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
-				if(!pass_forward_checking)
-				{		
-					//System.out.println("No pasa: " + i);
-					matrix[row][col] = 0;
-					insertPossibleValue(i, keys_with_values_removed);
-					continue;
+				Vector incident_keys = new Vector();
+				Vector keys_with_values_removed = new Vector();
+				if(this.type!=0) /// Forward Checking or MVR
+				{
+					incident_keys = valuesSameRowColBox(matrix, row, col);
+					keys_with_values_removed = removePossibleValue(i, incident_keys);
+					boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
+					if(!pass_forward_checking)
+					{		
+						matrix[row][col] = 0;
+						insertPossibleValue(i, keys_with_values_removed);
+						continue;
+					}
 				}
-				if(solveSudokuHeuristic(matrix))								
+								
+				if(solveSudoku(matrix))								
 					return true;
-				
-				insertPossibleValue(i, keys_with_values_removed);
+				if(this.type!=0)  /// Forward Checking or MVR
+					insertPossibleValue(i, keys_with_values_removed);
 				matrix[row][col] = 0;
 			}
 		}	
@@ -399,47 +375,25 @@ public class Sudoku
 	   Vector asignaciones = new Vector();
 	  for(int i=0; i<matrices.size(); i++)
 	   {
-		   int [][] matrix = (int[][]) matrices.get(i);
-		   
-		   if(this.type==0)
-		   {			   
-			   long time_start, time_end;
-			   time_start = System.currentTimeMillis();
-			   if(solveSudoku(matrix))
-			   {
-				 Utils.printM(matrix,N);
-				  System.out.println("");  
-			   }
-					
-				else
-					System.out.println("Not solution found!");
-			   time_end = System.currentTimeMillis();			   
-			   tiempos.add(time_end-time_start);			  
-			   asignaciones.add(this.counter);			   
-			   this.counter=0;
-			   
-		   }
-		   else
-		   {		  
-			   long time_start, time_end;
-			   time_start = System.currentTimeMillis();
-			   this.probable_values = getAllPossibleValues(matrix);
-			   //Utils.printMap(this.probable_values);
-			   if(solveSudokuHeuristic(matrix))
-			   {
-				 Utils.printM(matrix, N);
-				 System.out.println(""); 
-			   }
-				   
-			   else
-				   System.out.println("Not solution found!");
-			   time_end = System.currentTimeMillis();
-			   tiempos.add(time_end-time_start);					  
-			   asignaciones.add(this.counter);			   
-			   this.counter=0;			   
-		   }			   		   		  
+		  int [][] matrix = (int[][]) matrices.get(i);		
+		  long time_start, time_end;
+		  time_start = System.currentTimeMillis();
+		  if(this.type!=0)
+			  this.probable_values = getAllPossibleValues(matrix);
+		  if(solveSudoku(matrix))
+		  {
+			  Utils.printM(matrix,N);
+			  System.out.println("");  
+		  }
+		  else
+				System.out.println("Not solution found!");
+		   time_end = System.currentTimeMillis();			   
+		   tiempos.add(time_end-time_start);			  
+		   asignaciones.add(this.counter);			   
+		   this.counter=0;		  		  		  
 	   }
 	  
+	  /*
 	  System.out.println("Asignaciones \n");
 	  for(int i=0; i<asignaciones.size();i++)
 		  System.out.println(asignaciones.get(i));
@@ -447,6 +401,7 @@ public class Sudoku
 	  System.out.println("Tiempos \n");
 	  for(int i=0; i<tiempos.size();i++)
 		  System.out.println(tiempos.get(i));
+	  */
 	  
 	}
 		
@@ -458,8 +413,7 @@ public class Sudoku
 		 * 1 -> Backtracking with Forward Checking
 		 * 2 -> Backtracking with Forward Checking and MVR
 		 * */
-	
-		/*
+			
 		String test_default = "entrada.txt",  test_10 = "entrada10.txt";
 		Vector inputFiles = new Vector();
 		inputFiles.add(test_default); inputFiles.add(test_10);
@@ -473,10 +427,6 @@ public class Sudoku
 		Sudoku test = new Sudoku(type, (String) inputFiles.get(input));
 		test.solve();		
 					
-		System.out.println("\n \n");*/
-		Sudoku test = new Sudoku(2, "entrada.txt");
-		test.solve();
-		
-									
+		System.out.println("\n");								
 	}
 }

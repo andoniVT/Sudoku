@@ -80,6 +80,14 @@ static int N = 9;
 	{
 	   return String.valueOf(row) + String.valueOf(col);	   
 	}
+	
+	public static Vector string_to_pair(String key)
+	{
+		int row = Integer.parseInt(String.valueOf(key.charAt(0)));
+		int col = Integer.parseInt(String.valueOf(key.charAt(1)));
+		Vector pair = new Vector(); pair.add(row); pair.add(col); 
+		return pair; 
+	}
 		
 	
 	static void printMap(Map<String, Vector> map)
