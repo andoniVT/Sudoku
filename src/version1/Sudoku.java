@@ -336,10 +336,11 @@ public class Sudoku
 	  * 
 	  * */
 	public boolean solveSudokuHeuristic(int[][] matrix)
-	{
+	{		
 		int[] values =  searchFreeSpace(matrix);
 		if(values[0]==-1)
 			return true;
+				
 		int row, col;
 		if(this.type==1) /// Forward Checking
 		{
@@ -351,7 +352,7 @@ public class Sudoku
 			Vector position = findMVR();
 			row = (int) position.get(0);
 		    col = (int) position.get(1);
-		}
+		}				
 				
 		for(int i=1; i<=9; i++)
 		{
@@ -363,12 +364,12 @@ public class Sudoku
 				Vector keys_with_values_removed = removePossibleValue(i, incident_keys);
 				boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
 				if(!pass_forward_checking)
-				{
+				{		
 					matrix[row][col] = 0;
 					insertPossibleValue(i, keys_with_values_removed);
 					continue;
 				}
-				if(solveSudoku(matrix))								
+				if(solveSudokuHeuristic(matrix))								
 					return true;
 				
 				insertPossibleValue(i, keys_with_values_removed);
@@ -428,9 +429,14 @@ public class Sudoku
 			   this.counter=0;			   
 		   }			   		   		  
 	   }
-		
-	  //for(int i=0; i<asignaciones.size();i++)
-		//  System.out.println(asignaciones.get(i));
+	
+	  System.out.println("Asignaciones \n");
+	  for(int i=0; i<asignaciones.size();i++)
+		  System.out.println(asignaciones.get(i));
+	  
+	  System.out.println("Tiempos \n");
+	  for(int i=0; i<tiempos.size();i++)
+		  System.out.println(tiempos.get(i));
 	  
 	}
 		
@@ -442,7 +448,8 @@ public class Sudoku
 		 * 1 -> Backtracking with Forward Checking
 		 * 2 -> Backtracking with Forward Checking and MVR
 		 * */
-						
+	
+		/*
 		String test_default = "entrada.txt",  test_10 = "entrada10.txt";
 		Vector inputFiles = new Vector();
 		inputFiles.add(test_default); inputFiles.add(test_10);
@@ -456,7 +463,11 @@ public class Sudoku
 		Sudoku test = new Sudoku(type, (String) inputFiles.get(input));
 		test.solve();		
 					
-		System.out.println("\n \n");
+		System.out.println("\n \n");*/
+		Sudoku test = new Sudoku(0, "entrada.txt");
+		Sudoku test2 = new Sudoku(1, "entrada.txt");
+		test.solve();
+		test2.solve();		
 									
 	}
 }
