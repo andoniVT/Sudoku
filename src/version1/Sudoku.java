@@ -278,7 +278,7 @@ public class Sudoku
 	  *   find the position (row,col) of the minimum value remanecente 
 	  * 
 	  * */
-	public Vector findMVR()
+	public Vector findMVR(int[][] matrix)
 	{
 		Vector positions = new Vector();
 		Iterator it = probable_values.keySet().iterator();
@@ -287,14 +287,18 @@ public class Sudoku
 		while(it.hasNext())
 		{
 			String key = (String) it.next();
+			int row = Integer.parseInt(String.valueOf(key.charAt(0)));
+			int col = Integer.parseInt(String.valueOf(key.charAt(1)));
 			Vector values = probable_values.get(key);
 			int value = (int) values.get(0);			
-			if(value<menor)
+			if(value<menor && matrix[row][col]==0)
 			{
 				menor = value;
 				key_menor = key;
 			}
-		}		
+		}
+		
+		
 		int row = Integer.parseInt(String.valueOf(key_menor.charAt(0)));
 		int col = Integer.parseInt(String.valueOf(key_menor.charAt(1)));
 		positions.add(row);
@@ -337,6 +341,9 @@ public class Sudoku
 	  * */
 	public boolean solveSudokuHeuristic(int[][] matrix)
 	{		
+		//Utils.printM(matrix, 9);
+		//System.out.println("\n");
+	
 		int[] values =  searchFreeSpace(matrix);
 		if(values[0]==-1)
 			return true;
@@ -349,9 +356,10 @@ public class Sudoku
 		}
 		else   /// MVR
 		{
-			Vector position = findMVR();
+			Vector position = findMVR(matrix);
 			row = (int) position.get(0);
 		    col = (int) position.get(1);
+		    //System.out.println("Position MVR: " + row + " " + col);
 		}				
 				
 		for(int i=1; i<=9; i++)
@@ -365,6 +373,7 @@ public class Sudoku
 				boolean pass_forward_checking = allHavePossibleValues(this.probable_values);
 				if(!pass_forward_checking)
 				{		
+					//System.out.println("No pasa: " + i);
 					matrix[row][col] = 0;
 					insertPossibleValue(i, keys_with_values_removed);
 					continue;
@@ -415,6 +424,7 @@ public class Sudoku
 			   long time_start, time_end;
 			   time_start = System.currentTimeMillis();
 			   this.probable_values = getAllPossibleValues(matrix);
+			   //Utils.printMap(this.probable_values);
 			   if(solveSudokuHeuristic(matrix))
 			   {
 				 Utils.printM(matrix, N);
@@ -429,7 +439,7 @@ public class Sudoku
 			   this.counter=0;			   
 		   }			   		   		  
 	   }
-	
+	  
 	  System.out.println("Asignaciones \n");
 	  for(int i=0; i<asignaciones.size();i++)
 		  System.out.println(asignaciones.get(i));
@@ -464,10 +474,9 @@ public class Sudoku
 		test.solve();		
 					
 		System.out.println("\n \n");*/
-		Sudoku test = new Sudoku(0, "entrada.txt");
-		Sudoku test2 = new Sudoku(1, "entrada.txt");
+		Sudoku test = new Sudoku(2, "entrada.txt");
 		test.solve();
-		test2.solve();		
+		
 									
 	}
 }
