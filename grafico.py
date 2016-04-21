@@ -12,7 +12,7 @@ def convert(vector):
 
 
 def read():
-	fileName = "asignaciones.txt"
+	fileName = "tiempos.txt"
 	file = open(fileName, 'r')
 	matrix = []
 	for i in file:
