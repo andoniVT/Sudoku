@@ -371,8 +371,8 @@ public class Sudoku
 	  * */
 	public void solve()
 	{
-	   Vector tiempos = new Vector();
-	   Vector asignaciones = new Vector();
+	   Vector times = new Vector();
+	   Vector asignations = new Vector();
 	  for(int i=0; i<matrices.size(); i++)
 	   {
 		  int [][] matrix = (int[][]) matrices.get(i);		
@@ -388,19 +388,19 @@ public class Sudoku
 		  else
 				System.out.println("Not solution found!");
 		   time_end = System.currentTimeMillis();			   
-		   tiempos.add(time_end-time_start);			  
-		   asignaciones.add(this.counter);			   
+		   times.add(time_end-time_start);			  
+		   asignations.add(this.counter);			   
 		   this.counter=0;		  		  		  
 	   }
 	  
 	  /*
-	  System.out.println("Asignaciones \n");
-	  for(int i=0; i<asignaciones.size();i++)
-		  System.out.println(asignaciones.get(i));
+	  System.out.println("Asignations \n");
+	  for(int i=0; i<asignations.size();i++)
+		  System.out.println(asignations.get(i));
 	  
-	  System.out.println("Tiempos \n");
-	  for(int i=0; i<tiempos.size();i++)
-		  System.out.println(tiempos.get(i));
+	  System.out.println("Times \n");
+	  for(int i=0; i<times.size();i++)
+		  System.out.println(times.get(i));
 	  */
 	  
 	}
